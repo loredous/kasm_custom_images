@@ -2,15 +2,15 @@
 
 const nextConfig = {
   env: {
-    name: 'Kasm Technologies',
-    description: 'The official store for Kasm supported workspaces.',
+    name: 'Loredous Custom Kasm Registry',
+    description: 'Custom kasm registry for Loredous',
     icon: '/img/logo.svg',
-    listUrl: 'https://registry.kasmweb.com/',
-    contactUrl: 'https://kasmweb.com/support',
+    listUrl: 'https://loredous.github.io/',
+    contactUrl: 'https://portfoilio.loredous.net',
   },
   reactStrictMode: true,
   swcMinify: true,
-  basePath: '/kasm-registry/1.0',
+  basePath: '/kasm_custom_images/1.0',
   trailingSlash: true,
   images: {
     unoptimized: true,
