@@ -15,7 +15,7 @@ jobs:
     steps:
         - uses: actions/checkout@v4
         - id: matrix
-          run: ls images/dockerfile* | jq -R | jq -s -c
+          run: ls images/dockerfile* | jq -R | jq -s -c >> $GITHUB_OUTPUT
         - run: |
             echo "${{ steps.matrix.outputs.value }}"
   build-and-push-image:
