@@ -15,16 +15,10 @@ WORKDIR $HOME
 COPY ./src/ubuntu/install/chrome $INST_SCRIPTS/chrome/
 RUN bash $INST_SCRIPTS/chrome/install_chrome.sh  && rm -rf $INST_SCRIPTS/chrome/
 
-# Install Visual Studio Code and Extensions
+# Install Visual Studio Code
 COPY ./src/ubuntu/install/vs_code $INST_SCRIPTS/vs_code/
 RUN bash $INST_SCRIPTS/vs_code/install_vs_code.sh  && rm -rf $INST_SCRIPTS/vs_code/
-RUN code --install-extension ms-vscode-remote.remote-containers
-RUN code --install-extension ms-azuretools.vscode-docker
-RUN code --install-extension GitHub.copilot
-RUN code --install-extension GitHub.copilot-chat
-RUN code --install-extension GitHub.remotehub
-RUN code --install-extension GitHub.vscode-github-actions
-RUN code --install-extension GitHub.vscode-pull-request-github
+
 
 COPY ./src/ubuntu/install/vs_code/custom_startup.sh $STARTUPDIR/custom_startup.sh
 RUN chmod +x $STARTUPDIR/custom_startup.sh
@@ -45,3 +39,12 @@ WORKDIR $HOME
 RUN mkdir -p $HOME && chown -R 1000:0 $HOME
 
 USER 1000
+
+# Install Visual Studio Code Extensions as the user
+RUN code --install-extension ms-vscode-remote.remote-containers
+RUN code --install-extension ms-azuretools.vscode-docker
+RUN code --install-extension GitHub.copilot
+RUN code --install-extension GitHub.copilot-chat
+RUN code --install-extension GitHub.remotehub
+RUN code --install-extension GitHub.vscode-github-actions
+RUN code --install-extension GitHub.vscode-pull-request-github
