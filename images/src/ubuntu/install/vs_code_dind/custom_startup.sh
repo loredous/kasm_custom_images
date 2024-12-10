@@ -41,6 +41,7 @@ kasm_exec() {
         /usr/bin/filter_ready
         /usr/bin/desktop_ready
         bash ${MAXIMIZE_SCRIPT} &
+        dockerd_rootless.sh &
         $START_COMMAND $ARGS $OPT_URL
     else
         echo "No URL specified for exec command. Doing nothing."
