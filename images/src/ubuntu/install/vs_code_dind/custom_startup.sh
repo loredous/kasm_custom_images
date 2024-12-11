@@ -29,7 +29,6 @@ done
 FORCE=$2
 
 kasm_exec() {
-    dockerd_rootless.sh &
     if [ -n "$OPT_URL" ] ; then
         URL=$OPT_URL
     elif [ -n "$1" ] ; then
@@ -49,7 +48,6 @@ kasm_exec() {
 }
 
 kasm_startup() {
-    dockerd_rootless.sh &
     if [ -n "$KASM_URL" ] ; then
         URL=$KASM_URL
     elif [ -z "$URL" ] ; then
@@ -79,6 +77,7 @@ kasm_startup() {
 
 } 
 
+bash /usr/local/bin/dockerd-startup.sh &
 if [ -n "$GO" ] || [ -n "$ASSIGN" ] ; then
     kasm_exec
 else
