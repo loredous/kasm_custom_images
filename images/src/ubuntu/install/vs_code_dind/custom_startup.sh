@@ -29,6 +29,7 @@ done
 FORCE=$2
 
 kasm_exec() {
+    dockerd_rootless.sh &
     if [ -n "$OPT_URL" ] ; then
         URL=$OPT_URL
     elif [ -n "$1" ] ; then
@@ -41,7 +42,6 @@ kasm_exec() {
         /usr/bin/filter_ready
         /usr/bin/desktop_ready
         bash ${MAXIMIZE_SCRIPT} &
-        dockerd_rootless.sh &
         $START_COMMAND $ARGS $OPT_URL
     else
         echo "No URL specified for exec command. Doing nothing."
@@ -49,6 +49,7 @@ kasm_exec() {
 }
 
 kasm_startup() {
+    dockerd_rootless.sh &
     if [ -n "$KASM_URL" ] ; then
         URL=$KASM_URL
     elif [ -z "$URL" ] ; then
@@ -67,7 +68,6 @@ kasm_startup() {
                 /usr/bin/desktop_ready
                 set +e
                 bash ${MAXIMIZE_SCRIPT} &
-                dockerd_rootless.sh &
                 $START_COMMAND $ARGS $URL
                 set -e
             fi
