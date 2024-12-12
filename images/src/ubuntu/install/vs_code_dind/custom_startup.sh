@@ -77,7 +77,7 @@ kasm_startup() {
 
 } 
 
-bash /usr/local/bin/dockerd-startup.sh &
+bash /usr/local/bin/dockerd-rootless.sh &
 if [ -n "$GO" ] || [ -n "$ASSIGN" ] ; then
     kasm_exec
 else
